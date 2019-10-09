@@ -1,0 +1,13 @@
+.recipes {
+   background-color: cornsilk;
+   width: 750px;
+   display: block;
+   margin: 0 auto
+}
+
+.recipe {
+   background-color: aquamarine;
+   width: 700px;
+   margin: 20px;
+   padding: 10px
+}
