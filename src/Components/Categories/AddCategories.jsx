@@ -25,7 +25,6 @@ const ReduxAddCategoriesForm = reduxForm ({form: "addCategories"}) (AddCategorie
 const AddCategories = (props) => {
 
    const onSubmit = (formData) =>{
-      console.log("Отправилось Категория")
       props.setCategoriesTC(formData.title)
    }
 

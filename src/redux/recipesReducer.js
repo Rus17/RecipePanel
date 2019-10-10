@@ -20,10 +20,12 @@ const recipesReducer = (state = initialState, action) => {
 }
 
 // ------------------------- Action Creators -------------------------
+// ------------------------- Get categories -------------------------
 const getRecipesAC = (getRecipes) => ({
    type: GET_RECIPES,
    getRecipes
 })
+
 
 // ------------------------- Thunk Creators  -------------------------
 export const getRecipesTC = () =>{

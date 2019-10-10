@@ -1,9 +1,10 @@
-import {getCategoriesAPI, setCategoryAPI} from "../api/api"
+import {getCategoriesAPI, setCategoryAPI, delCategoryAPI} from "../api/api"
 
 const GET_CATEGORIES = "GET_CATEGORIES"
 
 const initialState = {
-   categories: []
+   categories: [],
+   edit: null
 }
 
 const categoriesReducer = (state = initialState, action) => {
@@ -27,6 +28,8 @@ export const getCategoriesAC = (getCategories) => ({
 })
 
 // ------------------------- Thunk Creators  -------------------------
+
+// ------------------------- Get all categories  -------------------------
 export const getCategoriesTC = () =>{
    return (dispatch) => {
       getCategoriesAPI()
@@ -34,9 +37,18 @@ export const getCategoriesTC = () =>{
    }
 }
 
+// ------------------------- Set category  -------------------------
 export const setCategoriesTC = (data) =>{
    return (dispatch) => {
       setCategoryAPI(data)
+      .then((response) => {dispatch(getCategoriesTC())})
+   }
+}
+
+// ------------------------- Delete category  -------------------------
+export const delCategoryTC = (categoryId) =>{
+   return (dispatch) => {
+      delCategoryAPI(categoryId)
       .then((response) => {dispatch(getCategoriesTC())})
    }
 }

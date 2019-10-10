@@ -5,3 +5,11 @@
    margin: 0 auto;
    padding: 20px
 }
+
+.buttons {
+  margin-left: 50px
+}
+
+.container {
+  /* display: grid; */
+}

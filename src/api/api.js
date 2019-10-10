@@ -15,6 +15,10 @@ export const setRecipeAPI = (title, text, categoryId) => {
    })
 }
 
+
+// -----------------------------------------------------
+
+
 // ------------- Получить категории --------------------
 export const getCategoriesAPI = () => {
    return  axios.get(`${server}api/v1/category/all`)
@@ -26,4 +30,9 @@ export const setCategoryAPI = (data) => {
    return axios.post(`${server}api/v1/category/create`, data, {
       headers: { 'content-type': 'application/json' }
    })
+}
+
+// ------------- Удалить категорию --------------------
+export const delCategoryAPI = (categoryId) => {
+   return axios.delete(`${server}api/v1/category/${categoryId}`)
 }

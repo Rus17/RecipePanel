@@ -7,9 +7,9 @@ import {BrowserRouter, Route} from "react-router-dom"
 import MenuCont from "./Components/Menu/MenuCont"
 import CategoriesContainer from "./Components/Categories/CategoriesContainer"
 import AddCategoriesContainer from "./Components/Categories/AddCategoreisContainer"
+import EditCategory from "./Components/Categories/EditCategory"
 
 function App(props) {
-
    return (
       <BrowserRouter>
       <Provider store={props.store}>
@@ -20,6 +20,12 @@ function App(props) {
                <Route
                   path="/categories/addCateg"
                   render={() => <AddCategoriesContainer />
+                  }
+               />
+
+               <Route
+                  path="/categories/editCateg/:idCat/:titleCat"
+                  render={() => <EditCategory />
                   }
                />
 
