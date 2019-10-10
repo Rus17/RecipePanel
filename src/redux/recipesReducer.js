@@ -20,7 +20,7 @@ const recipesReducer = (state = initialState, action) => {
 }
 
 // ------------------------- Action Creators -------------------------
-export const getRecipesAC = (getRecipes) => ({
+const getRecipesAC = (getRecipes) => ({
    type: GET_RECIPES,
    getRecipes
 })
@@ -33,27 +33,23 @@ export const getRecipesTC = () =>{
    }
 }
 
+
+// export const setRecipeTC = () => {
+//    console.log("Отправка 3")
+//    return () => {console.log('Hello world')}}
+
 export const setRecipeTC = (title, text, categoryId) => {
-   console.log("Отправка 3", title, text, categoryId)
-   // return (dispatch) => {
-      console.log("Отправка 4", title, text, categoryId)
+   return (dispatch) => {
       setRecipeAPI(title, text, categoryId)
-      .then(() => {
+      .then(() => {dispatch(getRecipesTC())
       })
-   // }
+   }
 }
 
-// export const setRecipeTC = (title, text, categoryId) => {
-//    return async (dispatch) => {
+
+// export const setRecipeTC = (title, text, categoryId) => async (dispatch) => {
 //       let response = await setRecipeAPI(title, text, categoryId)
 //       dispatch(getRecipesTC())
-//    }
 // }
-
-
-
-
-
-
 
 export default recipesReducer;

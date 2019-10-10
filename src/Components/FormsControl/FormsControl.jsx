@@ -18,3 +18,11 @@ export const Input = ({input, meta, ...props}) => {
       </div>
    )
 }
+
+export const Select = ({input, meta, ...props}) => {
+   return (
+      <div>
+         <select {...input} {...props} />
+      </div>
+   )
+}

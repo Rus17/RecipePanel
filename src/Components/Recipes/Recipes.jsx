@@ -18,14 +18,13 @@ const Recipes = (props) => {
       </div>)
    })
 
-
-
    return (<div className="recipes"><h1>Рецепты</h1>
 
+      <NavLink to="/recipes/addRecipe">Добавить рецепт</NavLink><br />
       <div>{showRecipes}
       </div>
 
-      <NavLink to="/addRecipe">Добавить рецепт</NavLink><br />
+
       </div>)
 }
 

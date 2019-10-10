@@ -16,15 +16,11 @@ class RecipesContainer extends React.Component {
    render (){
       return <Recipes recipes={this.props.recipesPage.recipes} />
    }
-
-
-
 }
 
 let MapStateToProps = (state) => {
    return {
-      recipesPage: state.recipesPage,
-      name: state.recipesPage.name,
+      recipesPage: state.recipesPage
    }
 }
 

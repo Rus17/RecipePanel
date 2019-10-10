@@ -1,0 +1,13 @@
+.menu {
+   display: flex;
+   margin: 0 auto 20px;
+   width: 750px;
+   height: 50px;
+   background-color: burlywood;
+   justify-content: space-between;
+}
+
+.menuItem {
+   color: black;
+   margin: auto;
+}

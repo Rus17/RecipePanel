@@ -1,13 +1,15 @@
 .recipes {
    background-color: cornsilk;
-   width: 750px;
-   display: block;
-   margin: 0 auto
+   width: 720px;
+   display: grid;
+   margin: 0 auto 20px;
+   padding: 0 20px;
+   justify-items: center;
 }
 
 .recipe {
    background-color: aquamarine;
-   width: 700px;
+   width: 670px;
    margin: 20px;
    padding: 10px
 }
