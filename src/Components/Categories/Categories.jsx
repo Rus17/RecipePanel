@@ -5,12 +5,14 @@ import React from "react"
 
 const Categories = (props) => {
 
-   const showCategories = props.categories.map((e) => {
+
+  const showCategories = props.categories.map((e) => {
       return <div key={e._id} className="container">
               <span key={e._id}>{e.title} </span>
               <span className="buttons">
 
-                   <NavLink to={`/categories/editCateg/${e._id}/${e.title}`}>Редактировать</NavLink>
+                    <NavLink to={`/categories/editCateg/${e._id}/${e.title}`
+                      }>Редактировать</NavLink>
 
                    <span>   </span>
 
