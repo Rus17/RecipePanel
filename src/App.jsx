@@ -8,6 +8,7 @@ import MenuCont from "./Components/Menu/MenuCont"
 import CategoriesContainer from "./Components/Categories/CategoriesContainer"
 import AddCategoriesContainer from "./Components/Categories/AddCategoreisContainer"
 import EditCategory from "./Components/Categories/EditCategory"
+import RecipeContainer from "./Components/Recipes/RecipeContainer"
 
 function App(props) {
    return (
@@ -53,11 +54,11 @@ function App(props) {
                   }
                />
 
-               {/*<Route
-                  path="/articles"
-                  render={
+               <Route
+                  path="/recipe/:recipeId"
+                  render={() => <RecipeContainer />
                   }
-               />*/}
+               />
 
 
 

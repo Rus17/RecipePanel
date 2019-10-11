@@ -9,7 +9,8 @@
 
 .recipe {
    background-color: aquamarine;
+   display: block;
    width: 670px;
-   margin: 20px;
+   margin: 0 auto 20px;
    padding: 10px
 }

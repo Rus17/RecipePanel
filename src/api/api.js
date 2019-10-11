@@ -7,6 +7,11 @@ export const getRecipesAPI = () => {
    return  axios.get(`${server}api/v1/recipe/all`)
 }
 
+// ------------------------- Get recipe -------------------------
+export const getRecipeAPI = (id) => {
+   return axios.get(`${server}api/v1/recipe/item/${id}`)
+}
+
 // ------------- Добавить рецепт --------------------
 export const setRecipeAPI = (title, text, categoryId) => {
    let data = JSON.stringify({title, text, categoryId})
