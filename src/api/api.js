@@ -20,6 +20,21 @@ export const setRecipeAPI = (title, text, categoryId) => {
    })
 }
 
+// ------------------------- Update recipe  -------------------------
+export const updateRecipeAPI = (obj) => {
+   let data = JSON.stringify(obj)
+   return axios.put(`${server}api/v1/recipe/update`, data, {
+      headers: { 'content-type': 'application/json' }
+   })
+}
+
+// ------------------------- Delete recipe  -------------------------
+export const delRecipeAPI = (id) => {
+   console.log(id)
+   return axios.delete(`${server}api/v1/recipe/${id}`, {
+      headers: { 'content-type': 'application/json' }
+   })
+}
 
 // -----------------------------------------------------
 

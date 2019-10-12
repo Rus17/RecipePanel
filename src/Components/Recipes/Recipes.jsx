@@ -1,7 +1,7 @@
 import React from "react"
 import "./Recipes.css"
 import {NavLink} from "react-router-dom"
-import Recipe from "./Recipe"
+// import Recipe from "./Recipe"
 
 const Recipes = (props) => {
 
