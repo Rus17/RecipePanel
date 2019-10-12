@@ -5,22 +5,22 @@ import React from "react"
 
 const Categories = (props) => {
 
-
-  const showCategories = props.categories.map((e) => {
+   const showCategories = props.categories.map((e) => {
       return <div key={e._id} className="container">
+             
+            <NavLink to={`/category/${e._id}`}>
               <span key={e._id}>{e.title} </span>
-              <span className="buttons">
-
+            </NavLink>  
+              
+         {/*<span className="buttons">
                     <NavLink to={`/categories/editCateg/${e._id}/${e.title}`
                       }>Редактировать</NavLink>
-
                    <span>   </span>
-
                    <span style={{cursor: "pointer", textDecoration: "underline"}}
                          onClick={() => {props.delCategoryTC(e._id)}}>Удалить
                    </span>
-
-               </span>
+               </span>*/}
+               
             </div>
    })
 

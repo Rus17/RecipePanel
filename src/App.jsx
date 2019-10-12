@@ -7,7 +7,7 @@ import {BrowserRouter, Route} from "react-router-dom"
 import MenuCont from "./Components/Menu/MenuCont"
 import CategoriesContainer from "./Components/Categories/CategoriesContainer"
 import AddCategoriesContainer from "./Components/Categories/AddCategoreisContainer"
-import EditCategory from "./Components/Categories/EditCategory"
+import CategoryContainer from "./Components/Categories/CategoryContainer"
 import RecipeContainer from "./Components/Recipes/RecipeContainer"
 
 function App(props) {
@@ -25,8 +25,8 @@ function App(props) {
                />
 
                <Route
-                  path="/categories/editCateg/:idCat/:titleCat"
-                  render={() => <EditCategory />
+                  path="/category/:idCat"
+                  render={() => <CategoryContainer />
                   }
                />
 
