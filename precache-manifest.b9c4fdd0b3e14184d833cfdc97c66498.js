@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b368543189018d097f9a05bca81db149",
+    "revision": "76e4af0fb686cd1ff87349c24a6c989d",
     "url": "/RecipePanel/index.html"
   },
   {
-    "revision": "ce801a66c8eb84cb6fc1",
+    "revision": "4a66f30fcd6197608881",
     "url": "/RecipePanel/static/css/main.f4b14d5b.chunk.css"
   },
   {
-    "revision": "f42386f538d2febe0608",
-    "url": "/RecipePanel/static/js/2.5ecfebeb.chunk.js"
+    "revision": "b72a08f0d1a06a3e4a12",
+    "url": "/RecipePanel/static/js/2.9d7bcf8a.chunk.js"
   },
   {
-    "revision": "ce801a66c8eb84cb6fc1",
-    "url": "/RecipePanel/static/js/main.1d85af46.chunk.js"
+    "revision": "4a66f30fcd6197608881",
+    "url": "/RecipePanel/static/js/main.19578802.chunk.js"
   },
   {
     "revision": "7f35db06631c49f40759",
