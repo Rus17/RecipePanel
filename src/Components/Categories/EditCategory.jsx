@@ -2,21 +2,21 @@
 import {Field, reduxForm} from 'redux-form'
 import {connect} from "react-redux"
 import {Redirect} from 'react-router-dom'
-import {Input, TextArea} from './../FormsControl/FormsControl'
+import {TextArea} from './../FormsControl/FormsControl'
 import "./Categories.css"
-import {withRouter} from 'react-router-dom'
 import {updateCategoryTC} from "./../../redux/categoriesReducer"
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 
 const EditCategoriesForm = (props) => {
    return <form onSubmit={props.handleSubmit} className="categories">
 
-      <div>Название категории
+      <div><b>Название категории</b></div>
          <Field
-           name="title"
-           type="text"
-           component="TextArea">{props.titleCat}</Field>
-      </div>
+            name="title"
+            type="text"
+            component="TextArea">{props.title}
+         </Field>
+         <br />
 
       <button>Сохранить изменения</button>
    </form>
@@ -27,31 +27,28 @@ const ReduxEditCategoriesForm = reduxForm ({form: "editCategories"}) (EditCatego
 
 
 const EditCategories = (props) => {
-
   let [editMode, setEditMode] = useState(false)
 
    const onSubmit = (formData) =>{
-      props.updateCategoryTC(props.match.params.idCat, formData.title)
+      props.updateCategoryTC(props.id, formData.title)
       setEditMode(true)
    }
 
   if(editMode) return <Redirect to={"/categories"} />
    return <ReduxEditCategoriesForm
               onSubmit={onSubmit}
-              idCat={props.match.params.idCat}
-              titleCat={props.match.params.titleCat}
+              id={props.id}
+              title={props.title}
               />
 }
-
-let WithUrlEditCateg = withRouter(EditCategories)
 
 
 const MapDispatchToProps = (dispatch) => {
   return {
-    updateCategoryTC: (_id, title, parentId) => {
-      dispatch(updateCategoryTC(_id, title, parentId))}
+    updateCategoryTC: (_id, title) => {
+      dispatch(updateCategoryTC(_id, title))}
   }
 }
 
 
-export default connect (null, MapDispatchToProps)(WithUrlEditCateg)
+export default connect (null, MapDispatchToProps)(EditCategories)

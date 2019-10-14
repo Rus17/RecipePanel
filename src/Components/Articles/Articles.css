@@ -1,4 +1,4 @@
-.recipes {
+.articles {
    background-color: cornsilk;
    width: 720px;
    display: grid;
@@ -7,8 +7,8 @@
    justify-items: center;
 }
 
-.recipe {
-   background-color: aquamarine;
+.article {
+   background-color: lightpink;
    display: block;
    width: 670px;
    margin: 0 auto 20px;

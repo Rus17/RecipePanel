@@ -11,5 +11,14 @@
 }
 
 .container {
-  /* display: grid; */
+  background-color: lightcyan;
+  
+}
+
+.category {
+   background-color: lavender;
+   display: block;
+   width: 670px;
+   margin: 0 auto 20px;
+   padding: 10px
 }

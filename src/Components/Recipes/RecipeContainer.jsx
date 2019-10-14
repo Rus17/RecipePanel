@@ -1,6 +1,11 @@
 import React from "react"
 import Recipe from "./Recipe"
-import {getRecipeTC, updateRecipeTC, delResipeTC} from "./../../redux/recipeReducer"
+import {
+   getRecipeTC,
+   updateRecipeTC,
+   delResipeTC,
+   getCategoryListTC
+} from "./../../redux/recipeReducer"
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 
@@ -8,14 +13,16 @@ class RecipeContainer extends React.Component {
 
    refreshRecipe(){
       this.props.getRecipeTC(this.props.match.params.recipeId)
+      this.props.getCategoryListTC(this.props.match.params.recipeId)
    }
 
    componentDidMount(){
       this.refreshRecipe()
+
    }
 
    componentDidUpdate (prevProps, prevState, snapshot){
-      // if(prevProps.match.params.recipeId !== this.props.match.params.recipeId)
+      if(!this.props.categoryList)
       this.refreshRecipe()
    }
 
@@ -28,6 +35,7 @@ class RecipeContainer extends React.Component {
                date={this.props.date}
                updateRecipeTC={(obj) => this.props.updateRecipeTC(obj)}
                delResipeTC={(id) => this.props.delResipeTC(id)}
+               categoryList={this.props.categoryList}
                />
    }
 }
@@ -39,14 +47,16 @@ let MapStateToProps = (state) => {
       title: state.recipePage.recipe.title,
       text: state.recipePage.recipe.text,
       categoryId: state.recipePage.recipe.categoryId,
-      date: state.recipePage.recipe.updatedAt
+      date: state.recipePage.recipe.updatedAt,
+      categoryList: state.recipePage.categoryList
    })}
 
 let MapDispatchToProps = (dispatch) => {
    return ({
       getRecipeTC: (id) => {dispatch(getRecipeTC(id))},
       updateRecipeTC: (obj) => {dispatch(updateRecipeTC(obj))},
-      delResipeTC: (id) => {dispatch(delResipeTC(id))}
+      delResipeTC: (id) => {dispatch(delResipeTC(id))},
+      getCategoryListTC: (id) => {dispatch(getCategoryListTC(id))}
    })
 }
 

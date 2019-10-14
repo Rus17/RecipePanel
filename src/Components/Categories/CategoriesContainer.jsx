@@ -12,7 +12,6 @@ class CategoriesContainer extends React.Component {
 
    render(props){
       return <Categories
-                className="container"
                 categories={this.props.categoriesPage.categories}
                 delCategoryTC={(categoryId) => this.props.delCategoryTC(categoryId)}
               />

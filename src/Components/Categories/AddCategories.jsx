@@ -1,19 +1,32 @@
-import React from "react"
+import React, {useState}  from "react"
 import {Field, reduxForm} from 'redux-form'
-import {Input} from './../FormsControl/FormsControl'
+import {Redirect} from 'react-router-dom'
+import {Input, Select} from './../FormsControl/FormsControl'
 import "./Categories.css"
 
 const AddCategoriesForm = (props) => {
 
+   let showCategories = props.categoriesPage.categories.map((e) => {
+      return <option key={e._id} value={e._id}>{e.title}</option>
+   })
+
    return <form onSubmit={props.handleSubmit} className="categories">
 
-      <div>Название категории
+      <div>
+         <div><b>Название категории</b></div>
          <Field
            name="title"
            type="text"
            placeholder="Название категории"
            component={Input}
            />
+
+           <div><b>Выберите родительскую категорию</b></div>
+              <Field name="parentId" component={Select}>
+                 {showCategories}
+               </Field>
+
+
       </div>
 
       <button>Добавить</button>
@@ -24,11 +37,19 @@ const ReduxAddCategoriesForm = reduxForm ({form: "addCategories"}) (AddCategorie
 
 const AddCategories = (props) => {
 
+   let [addDone, setEditMode] = useState(false)
+
    const onSubmit = (formData) =>{
-      props.setCategoriesTC(formData.title)
+      props.addCategoryTC(formData.title, formData.parentId)
+      setEditMode(true)
    }
 
-   return <ReduxAddCategoriesForm onSubmit={onSubmit}/>
+   if(addDone) return <Redirect to={"/categories"} />
+   else
+   return <ReduxAddCategoriesForm
+               onSubmit={onSubmit}
+               categoriesPage={props.categoriesPage}
+            />
 }
 
 export default AddCategories

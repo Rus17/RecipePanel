@@ -1,10 +1,13 @@
 import React from "react"
 import AddCategories from "./AddCategories"
-import {setCategoriesTC} from "../../redux/categoriesReducer"
+import {addCategoryTC} from "../../redux/categoriesReducer"
 import {connect} from "react-redux"
 
 const AddCategoriesContainer = (props) => {
-   return <AddCategories setCategoriesTC={props.setCategoriesTC}/>
+   return <AddCategories
+               addCategoryTC={props.addCategoryTC}
+               categoriesPage={props.categoriesPage}
+         />
 }
 
 let MapStateToProps = (state) => {
@@ -15,7 +18,7 @@ let MapStateToProps = (state) => {
 
 let MapDispatchToProps = (dispatch) => {
    return {
-      setCategoriesTC: (data) => {dispatch(setCategoriesTC(data))}
+      addCategoryTC: (title, parentId) => {dispatch(addCategoryTC(title, parentId))}
    }
 }
 

@@ -1,25 +1,25 @@
 import {
-   getRecipeAPI,
-   updateRecipeAPI,
-   delRecipeAPI,
-   getCategoryListAPI
+   getArticleAPI,
+   updateArticleAPI,
+   delArticleAPI,
+   getCategoryArticleListAPI
 } from './../api/api'
-import {getRecipesTC} from "./recipesReducer"
+import {getArticlesTC} from "./articlesReducer"
 
-const GET_RECIPE = 'GET_RECIPE'
+const GET_ARTICLE = 'GET_ARTICLE'
 const GET_CATEGORY_LIST = 'GET_CATEGORY_LIST'
 
 let initialState = {
-   recipe: [],
+   article: [],
    categoryList: []
 };
 
-const recipeReducer = (state = initialState, action) => {
+const articleReducer = (state = initialState, action) => {
    switch(action.type) {
-      case GET_RECIPE:
+      case GET_ARTICLE:
          return {
             ...state,
-            recipe: action.getRecipe
+            article: action.getArticle
          }
 
          case GET_CATEGORY_LIST:
@@ -34,10 +34,10 @@ const recipeReducer = (state = initialState, action) => {
 }
 
 // ------------------------- Action Creators -------------------------
-// ------------------------- Get recipe -------------------------
-const getRecipeAC = (getRecipe) => ({
-   type: GET_RECIPE,
-   getRecipe
+// ------------------------- Get article -------------------------
+const getArticleAC = (getArticle) => ({
+   type: GET_ARTICLE,
+   getArticle
 })
 
 // ------------------------- Get Category List -------------------------
@@ -50,36 +50,36 @@ const getCategoryListAC = (categoryList) => ({
 
 
 // ------------------------- Thunk Creators  -------------------------
-// ------------------------- Get recipe -------------------------
-export const getRecipeTC = (id) =>{
+// ------------------------- Get article -------------------------
+export const getArticleTC = (id) =>{
    return (dispatch) => {
-      getRecipeAPI(id)
+      getArticleAPI(id)
       .then((response) => {
          // console.log(response)
-         dispatch(getRecipeAC(response.data))
+         dispatch(getArticleAC(response.data))
       })
    }
 }
 
-// ------------------------- Update recipe -------------------------
+// ------------------------- Update article -------------------------
 
-export const updateRecipeTC = (obj) =>{
+export const updateArticleTC = (obj) =>{
    return (dispatch) => {
-      updateRecipeAPI(obj)
+      updateArticleAPI(obj)
       .then((response) => {
          console.log(response)
-         dispatch(getRecipeTC(response.data._id))
+         dispatch(getArticleTC(response.data._id))
       })
    }
 }
 
-// ------------------------- Delete recipe -------------------------
+// ------------------------- Delete article -------------------------
 
 export const delResipeTC = (id) =>{
    return (dispatch) => {
-      delRecipeAPI(id)
+      delArticleAPI(id)
       .then(() => {
-         dispatch(getRecipesTC())
+         dispatch(getArticlesTC())
       })
    }
 }
@@ -87,7 +87,7 @@ export const delResipeTC = (id) =>{
 // ------------------------- Get Category List -------------------------
 export const getCategoryListTC = (id) =>{
    return (dispatch) => {
-      getCategoryListAPI(id)
+      getCategoryArticleListAPI(id)
       .then((response) => {
          // console.log(response)
          dispatch(getCategoryListAC(response.data))
@@ -98,4 +98,4 @@ export const getCategoryListTC = (id) =>{
 
 
 
-export default recipeReducer;
+export default articleReducer;

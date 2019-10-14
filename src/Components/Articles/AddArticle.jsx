@@ -1,21 +1,30 @@
 import React from "react"
 import {Field, reduxForm} from 'redux-form'
 import {Input, TextArea} from './../FormsControl/FormsControl'
-import "./Recipes.css"
+import "./Articles.css"
 
-const AddRecipeForm = (props) => {
+const AddArticleForm = (props) => {
 
    let showCategories = props.categoriesPage.categories.map((e) => {
       return <option value={e._id}>{e.title}</option>
    })
 
-   return <form onSubmit={props.handleSubmit} className="recipes">
+   return <form onSubmit={props.handleSubmit} className="articles">
       <div>Название рецепта
          <Field
            name="title"
            type="text"
-           placeholder="Название рецепта"
+           placeholder="Название статьи"
            component={Input}
+           />
+      </div>
+
+      <div>Текст рецепта
+         <Field
+           name="description"
+           type="text"
+           placeholder="Краткое описание"
+           component={TextArea}
            />
       </div>
 
@@ -23,7 +32,7 @@ const AddRecipeForm = (props) => {
          <Field
            name="text"
            type="text"
-           placeholder="Текст рецепта"
+           placeholder="Текст статьи"
            component={TextArea}
            />
       </div>
@@ -41,16 +50,16 @@ const AddRecipeForm = (props) => {
    </form>
 }
 
-const ReduxAddRecipeForm = reduxForm ({form: "addRecipe"}) (AddRecipeForm)
+const ReduxAddArticleForm = reduxForm ({form: "addArticle"}) (AddArticleForm)
 
-const AddRecipe = (props) => {
+const AddArticle = (props) => {
    const onSubmit = (formData) =>{
 
-      props.setRecipeTC(formData.title, formData.text, formData.categoryId)
+      props.setArticleTC(formData.title, formData.description, formData.text, formData.categoryId)
 
    }
 
-   return <ReduxAddRecipeForm onSubmit={onSubmit} categoriesPage={props.categoriesPage}/>
+   return <ReduxAddArticleForm onSubmit={onSubmit} categoriesPage={props.categoriesPage}/>
 }
 
-export default AddRecipe
+export default AddArticle

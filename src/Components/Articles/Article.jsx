@@ -1,11 +1,11 @@
 import {Field, reduxForm} from 'redux-form'
 import React, {useState} from 'react'
 import {Redirect} from 'react-router-dom'
-import "./Recipes.css"
+import "./Articles.css"
 import {Input, TextArea} from './../FormsControl/FormsControl'
 import {NavLink} from "react-router-dom"
 
-const Recipe = (props) => {
+const Article = (props) => {
 
    let category = props.categoryList.map((c) => {
       return <NavLink  key={c._id} to={`/category/${c._id}`}> / {c.title}</NavLink>
@@ -23,7 +23,7 @@ const Recipe = (props) => {
          categoryId: props.categoryId
       }
 
-      props.updateRecipeTC(createObj)
+      props.updateArticleTC(createObj)
       setEditMode(false)
    }
 
@@ -43,18 +43,23 @@ const Recipe = (props) => {
       statusEdit()
    }
 
-   if(!status)return <Redirect to={"/recipes"} />
+   if(!status)return <Redirect to={"/articles"} />
    return (<>
       {editMode ?
-         <ReduxRecipeForm
+         <ReduxArticleForm
             id={props.id}
             title={props.title}
+            description={props.description}
             text={props.text}
             date={props.date}
             onSubmit={onSubmit}
          /> :
-         <div className="recipe">
+         <div className="article">
+         <div><b>Название статьи</b></div>
          <h2>{props.title}</h2>
+         <div><b>Описание статьи</b></div>
+         <div>{props.description}</div><br />
+         <div><b>Статья</b></div>
          <div>{props.text}</div>
          <br />
          <div><b>Категории к которым относится рецепт</b></div>
@@ -71,17 +76,24 @@ const Recipe = (props) => {
 
 //----------------------------------------------
 
-const RecipeForm = (props) => {
+const ArticleForm = (props) => {
 
-   return ( <><form onSubmit={props.handleSubmit} className="recipe">
-      <div>Название рецепта</div>
+   return ( <><form onSubmit={props.handleSubmit} className="article">
+      <div>Название статьи</div>
          <Field
            name="title"
            type="text"
            component="TextArea">{props.title}
          </Field>
 
-      <div>Текст рецепта</div>
+         <div>Описание статьи</div>
+            <Field
+              name="description"
+              type="text"
+              component="TextArea">{props.description}
+            </Field>
+
+      <div>Статья</div>
          <Field
            name="text"
            type="text"
@@ -90,23 +102,11 @@ const RecipeForm = (props) => {
 
       <button>Сохранить изменения</button>
    </form>
-
-   {/*   <div className="recipe">
-      <div>Название рецепта</div>
-      <textarea defaultValue={props.title}></textarea>
-      <br />
-      <div>Текст</div>
-      <textarea defaultValue={props.text}></textarea>
-      <br />
-      <div>{props.date}</div>
-
-      <button>Сохранить изменения</button>
-   </div>*/}
    </>)
 
 }
 
 
-const ReduxRecipeForm = reduxForm ({form: "editRecipe"}) (RecipeForm)
+const ReduxArticleForm = reduxForm ({form: "editArticle"}) (ArticleForm)
 
-export default Recipe
+export default Article
