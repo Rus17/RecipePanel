@@ -25,6 +25,12 @@ function App(props) {
             <div>
 
                <Route
+                  exact path="/"
+                  render={() => <CategoriesContainer/>
+                  }
+               />
+
+               <Route
                   path="/categories/addCateg"
                   render={() => <AddCategoriesContainer />
                   }
@@ -38,12 +44,6 @@ function App(props) {
 
                <Route
                   path="/categories"
-                  render={() => <CategoriesContainer/>
-                  }
-               />
-
-               <Route
-                  exact path="/"
                   render={() => <CategoriesContainer/>
                   }
                />
