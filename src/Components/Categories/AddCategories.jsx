@@ -25,15 +25,15 @@ const AddCategoriesForm = (props) => {
               <Field name="parentId" component={Select}>
                  {showCategories}
                </Field>
-
-
       </div>
 
       <button>Добавить</button>
    </form>
 }
 
+
 const ReduxAddCategoriesForm = reduxForm ({form: "addCategories"}) (AddCategoriesForm)
+
 
 const AddCategories = (props) => {
 

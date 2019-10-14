@@ -18,7 +18,6 @@ export const getRecipeAPI = (id) => {
 
 // ----------------------- Add recipe --------------------
 export const setRecipeAPI = (title, text, categoryId) => {
-   console.log("api", title, text, categoryId)
    let data = JSON.stringify({title, text, categoryId})
    return axios.post(`${server}api/v1/recipe/create`, data, {
       headers: { 'content-type': 'application/json' }
@@ -35,7 +34,6 @@ export const updateRecipeAPI = (obj) => {
 
 // ------------------------- Delete recipe  -------------------------
 export const delRecipeAPI = (id) => {
-   console.log(id)
    return axios.delete(`${server}api/v1/recipe/${id}`, {
       headers: { 'content-type': 'application/json' }
    })
@@ -123,7 +121,6 @@ export const updateArticleAPI = (obj) => {
 
 // ------------------------- Delete article  -------------------------
 export const delArticleAPI = (id) => {
-   console.log(id)
    return axios.delete(`${server}api/v1/article/${id}`, {
       headers: { 'content-type': 'application/json' }
    })

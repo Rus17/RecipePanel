@@ -55,7 +55,6 @@ export const getRecipeTC = (id) =>{
    return (dispatch) => {
       getRecipeAPI(id)
       .then((response) => {
-         // console.log(response)
          dispatch(getRecipeAC(response.data))
       })
    }
@@ -67,7 +66,6 @@ export const updateRecipeTC = (obj) =>{
    return (dispatch) => {
       updateRecipeAPI(obj)
       .then((response) => {
-         console.log(response)
          dispatch(getRecipeTC(response.data._id))
       })
    }
@@ -89,7 +87,6 @@ export const getCategoryListTC = (id) =>{
    return (dispatch) => {
       getCategoryListAPI(id)
       .then((response) => {
-         // console.log(response)
          dispatch(getCategoryListAC(response.data))
       })
    }

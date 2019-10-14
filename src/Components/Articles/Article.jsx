@@ -19,6 +19,7 @@ const Article = (props) => {
       let createObj = {
          _id: props.id,
          title: formData.title || props.title,
+         description: formData.description || props.description,
          text: formData.text || props.text,
          categoryId: props.categoryId
       }
@@ -54,8 +55,7 @@ const Article = (props) => {
             date={props.date}
             onSubmit={onSubmit}
          /> :
-         <div className="article">
-         <div><b>Название статьи</b></div>
+         <div className="article">         
          <h2>{props.title}</h2>
          <div><b>Описание статьи</b></div>
          <div>{props.description}</div><br />

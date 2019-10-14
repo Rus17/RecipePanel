@@ -78,14 +78,6 @@ export const getArticleByCategoryAC = (articlesCategory) => ({
 // ------------------------- Thunk Creators  -------------------------
 
 // ------------------------- Get all categories  -------------------------
-// export const getCategoriesTC = () =>{
-//    console.log("Ушел")
-//    return (dispatch) => {
-//       getCategoriesAPI()
-//       .then((response) => {console.log("Пришел")
-//       dispatch(getCategoriesAC(response.data))})
-//    }
-// }
 
 export const getCategoriesTC = () =>{
    return async (dispatch) => {

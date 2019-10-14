@@ -73,7 +73,7 @@ const Recipe = (props) => {
 
 const RecipeForm = (props) => {
 
-   return ( <><form onSubmit={props.handleSubmit} className="recipe">
+   return ( <form onSubmit={props.handleSubmit} className="recipe">
       <div>Название рецепта</div>
          <Field
            name="title"
@@ -89,20 +89,8 @@ const RecipeForm = (props) => {
          </Field><br />
 
       <button>Сохранить изменения</button>
-   </form>
-
-   {/*   <div className="recipe">
-      <div>Название рецепта</div>
-      <textarea defaultValue={props.title}></textarea>
-      <br />
-      <div>Текст</div>
-      <textarea defaultValue={props.text}></textarea>
-      <br />
-      <div>{props.date}</div>
-
-      <button>Сохранить изменения</button>
-   </div>*/}
-   </>)
+   </form>   
+   )
 
 }
 

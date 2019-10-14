@@ -35,11 +35,6 @@ export const getRecipesTC = () =>{
    }
 }
 
-
-// export const setRecipeTC = () => {
-//    console.log("Отправка 3")
-//    return () => {console.log('Hello world')}}
-
 export const setRecipeTC = (title, text, categoryId) => {
    return (dispatch) => {
       setRecipeAPI(title, text, categoryId)

@@ -25,9 +25,6 @@ const Category = (props) => {
       )
    })
 
-
-
-
    let [status, setStatus] = useState(true)
    const delCat = (categoryId) => {
       props.delCategoryTC(categoryId)

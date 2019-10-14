@@ -1,16 +1,17 @@
-import React from "react"
+import React, {useState} from "react"
 import {Field, reduxForm} from 'redux-form'
-import {Input, TextArea} from './../FormsControl/FormsControl'
+import {Input, TextArea, Select} from './../FormsControl/FormsControl'
 import "./Articles.css"
+import {Redirect} from "react-router-dom"
 
 const AddArticleForm = (props) => {
 
    let showCategories = props.categoriesPage.categories.map((e) => {
-      return <option value={e._id}>{e.title}</option>
+      return <option key={e._id} value={e._id}>{e.title}</option>
    })
 
    return <form onSubmit={props.handleSubmit} className="articles">
-      <div>Название рецепта
+      <div>Название статьи
          <Field
            name="title"
            type="text"
@@ -19,7 +20,7 @@ const AddArticleForm = (props) => {
            />
       </div>
 
-      <div>Текст рецепта
+      <div>Краткое описание
          <Field
            name="description"
            type="text"
@@ -28,7 +29,7 @@ const AddArticleForm = (props) => {
            />
       </div>
 
-      <div>Текст рецепта
+      <div>Текст статьи
          <Field
            name="text"
            type="text"
@@ -38,7 +39,7 @@ const AddArticleForm = (props) => {
       </div>
 
       <div>
-         <Field name="categoryId" component="Select">
+         <Field name="categoryId" component={Select}>
             <option>Выберите категорию</option>
             {showCategories}
           </Field>
@@ -53,12 +54,16 @@ const AddArticleForm = (props) => {
 const ReduxAddArticleForm = reduxForm ({form: "addArticle"}) (AddArticleForm)
 
 const AddArticle = (props) => {
+   
+   let [addDone, setEditMode] = useState(false)
+   
    const onSubmit = (formData) =>{
-
       props.setArticleTC(formData.title, formData.description, formData.text, formData.categoryId)
-
+      setEditMode(true)
    }
 
+   if(addDone) return <Redirect to={"/articles"} />
+   else
    return <ReduxAddArticleForm onSubmit={onSubmit} categoriesPage={props.categoriesPage}/>
 }
 

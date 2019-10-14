@@ -55,7 +55,6 @@ export const getArticleTC = (id) =>{
    return (dispatch) => {
       getArticleAPI(id)
       .then((response) => {
-         // console.log(response)
          dispatch(getArticleAC(response.data))
       })
    }
@@ -67,7 +66,6 @@ export const updateArticleTC = (obj) =>{
    return (dispatch) => {
       updateArticleAPI(obj)
       .then((response) => {
-         console.log(response)
          dispatch(getArticleTC(response.data._id))
       })
    }
@@ -89,7 +87,6 @@ export const getCategoryListTC = (id) =>{
    return (dispatch) => {
       getCategoryArticleListAPI(id)
       .then((response) => {
-         // console.log(response)
          dispatch(getCategoryListAC(response.data))
       })
    }

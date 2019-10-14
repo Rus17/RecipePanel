@@ -93,7 +93,7 @@ function App(props) {
 class AppContainer extends React.Component{
 
    componentDidMount(props){
-      // this.props.getCategoriesTC()
+      this.props.getCategoriesTC()
    }
 
    render(){
