@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/RecipePanel/static/css/main.f4b14d5b.chunk.css",
-    "main.js": "/RecipePanel/static/js/main.5d2097d6.chunk.js",
-    "main.js.map": "/RecipePanel/static/js/main.5d2097d6.chunk.js.map",
+    "main.js": "/RecipePanel/static/js/main.1d85af46.chunk.js",
+    "main.js.map": "/RecipePanel/static/js/main.1d85af46.chunk.js.map",
     "runtime-main.js": "/RecipePanel/static/js/runtime-main.a2e41f9c.js",
     "runtime-main.js.map": "/RecipePanel/static/js/runtime-main.a2e41f9c.js.map",
     "static/js/2.5ecfebeb.chunk.js": "/RecipePanel/static/js/2.5ecfebeb.chunk.js",
     "static/js/2.5ecfebeb.chunk.js.map": "/RecipePanel/static/js/2.5ecfebeb.chunk.js.map",
     "index.html": "/RecipePanel/index.html",
-    "precache-manifest.ac9c9add093ce875e6a42c75f5db8eaf.js": "/RecipePanel/precache-manifest.ac9c9add093ce875e6a42c75f5db8eaf.js",
+    "precache-manifest.e7e2e55ca2db3182e99cbc48ea89db48.js": "/RecipePanel/precache-manifest.e7e2e55ca2db3182e99cbc48ea89db48.js",
     "service-worker.js": "/RecipePanel/service-worker.js",
     "static/css/main.f4b14d5b.chunk.css.map": "/RecipePanel/static/css/main.f4b14d5b.chunk.css.map"
   },
@@ -16,6 +16,6 @@
     "static/js/runtime-main.a2e41f9c.js",
     "static/js/2.5ecfebeb.chunk.js",
     "static/css/main.f4b14d5b.chunk.css",
-    "static/js/main.5d2097d6.chunk.js"
+    "static/js/main.1d85af46.chunk.js"
   ]
 }
