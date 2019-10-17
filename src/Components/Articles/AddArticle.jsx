@@ -3,6 +3,7 @@ import {Field, reduxForm} from 'redux-form'
 import {Input, TextArea, Select} from './../FormsControl/FormsControl'
 import "./Articles.css"
 import {Redirect} from "react-router-dom"
+import {required, minTitle, minText} from "./../../Validators/Validators"
 
 const AddArticleForm = (props) => {
 
@@ -10,13 +11,14 @@ const AddArticleForm = (props) => {
       return <option key={e._id} value={e._id}>{e.title}</option>
    })
 
-   return <form onSubmit={props.handleSubmit} className="articles">
+   return <form onSubmit={props.handleSubmit} className="article">
       <div>Название статьи
          <Field
            name="title"
            type="text"
            placeholder="Название статьи"
            component={Input}
+           validate={[required, minTitle]}
            />
       </div>
 
@@ -26,6 +28,7 @@ const AddArticleForm = (props) => {
            type="text"
            placeholder="Краткое описание"
            component={TextArea}
+           validate={[required, minText]}
            />
       </div>
 
@@ -35,12 +38,14 @@ const AddArticleForm = (props) => {
            type="text"
            placeholder="Текст статьи"
            component={TextArea}
+           validate={[required, minText]}
            />
       </div>
 
       <div>
+      <div><b>Выберите категорию</b></div>
          <Field name="categoryId" component={Select}>
-            <option>Выберите категорию</option>
+            <option>Без категории</option>
             {showCategories}
           </Field>
       </div>
@@ -54,9 +59,9 @@ const AddArticleForm = (props) => {
 const ReduxAddArticleForm = reduxForm ({form: "addArticle"}) (AddArticleForm)
 
 const AddArticle = (props) => {
-   
+
    let [addDone, setEditMode] = useState(false)
-   
+
    const onSubmit = (formData) =>{
       props.setArticleTC(formData.title, formData.description, formData.text, formData.categoryId)
       setEditMode(true)

@@ -6,8 +6,6 @@ import recipesReducer from "./recipesReducer"
 import recipeReducer from "./recipeReducer"
 import articlesReducer from "./articlesReducer"
 import articleReducer from "./articleReducer"
-
-
 import categoriesReducer from './categoriesReducer'
 
 let reducers = combineReducers({

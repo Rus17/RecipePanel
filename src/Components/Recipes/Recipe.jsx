@@ -1,18 +1,13 @@
-import {Field, reduxForm} from 'redux-form'
 import React, {useState} from 'react'
 import {Redirect} from 'react-router-dom'
 import "./Recipes.css"
-import {Input, TextArea} from './../FormsControl/FormsControl'
 import {NavLink} from "react-router-dom"
+import RecipeEditForm from "./RecipeEditForm"
 
 const Recipe = (props) => {
-
    let category = props.categoryList.map((c) => {
       return <NavLink  key={c._id} to={`/category/${c._id}`}> / {c.title}</NavLink>
-
-      // return <span key={c._id}> / {c.title}</span>
    })
-
 
    const onSubmit = (formData) =>{
 
@@ -28,8 +23,13 @@ const Recipe = (props) => {
    }
 
    let [editMode, setEditMode] = useState(false)
-    const modeEdit = () =>{
-       setEditMode(true)
+
+   const modeEdit = () =>{
+      props.loadAC({
+         title: props.title,
+         text: props.text
+      })
+      setEditMode(true)
     }
 
     let [status, setStatus] = useState(true)
@@ -46,12 +46,13 @@ const Recipe = (props) => {
    if(!status)return <Redirect to={"/recipes"} />
    return (<>
       {editMode ?
-         <ReduxRecipeForm
+         <RecipeEditForm
             id={props.id}
             title={props.title}
             text={props.text}
             date={props.date}
             onSubmit={onSubmit}
+            initialValues={props.initFormRecipe}
          /> :
          <div className="recipe">
          <h2>{props.title}</h2>
@@ -68,33 +69,5 @@ const Recipe = (props) => {
       }</>)
 
 }
-
-//----------------------------------------------
-
-const RecipeForm = (props) => {
-
-   return ( <form onSubmit={props.handleSubmit} className="recipe">
-      <div>Название рецепта</div>
-         <Field
-           name="title"
-           type="text"
-           component="TextArea">{props.title}
-         </Field>
-
-      <div>Текст рецепта</div>
-         <Field
-           name="text"
-           type="text"
-           component="TextArea">{props.text}
-         </Field><br />
-
-      <button>Сохранить изменения</button>
-   </form>   
-   )
-
-}
-
-
-const ReduxRecipeForm = reduxForm ({form: "editRecipe"}) (RecipeForm)
 
 export default Recipe

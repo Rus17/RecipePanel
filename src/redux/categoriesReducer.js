@@ -13,13 +13,15 @@ const GET_CATEGORIES = "GET_CATEGORIES"
 const PARENTS_CATEGORY = "PARENTS_CATEGORY"
 const RECIPE_BY_CATEGORY = "RECIPE_BY_CATEGORY"
 const ARTICLES_BY_CATEGORY = "ARTICLES_BY_CATEGORY"
+const INIT_CATEGORY_VALUE = "INIT_CATEGORY_VALUE"
 
 const initialState = {
    categories: [],
    // edit: null,
    recipeByCategory: [],
    parentsCategory: [],
-   articlesCategory: []
+   articlesCategory: [],
+   initFormCategory: {}
 }
 
 const categoriesReducer = (state = initialState, action) => {
@@ -46,12 +48,23 @@ const categoriesReducer = (state = initialState, action) => {
          articlesCategory: action.articlesCategory
       }
 
+      case INIT_CATEGORY_VALUE: return {
+            ...state,
+            initFormCategory: action.data
+         }
+
       default: return state
 
    }
 }
 
 // ------------------------- Action Creators -------------------------
+// -------------------- Get initial form of category ------------------
+export const initFormCategoryAC = data => {
+   return ({ type: INIT_CATEGORY_VALUE, data })
+}
+
+// -------------------- Get all categories ------------------------
 export const getCategoriesAC = (getCategories) => ({
    type: GET_CATEGORIES,
    getCategories

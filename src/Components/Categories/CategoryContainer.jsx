@@ -7,7 +7,8 @@ import {
    updateCategoryTC,
    delCategoryTC,
    getRecipeByCategoryTC,
-   getFullCategoryInformationTC
+   getFullCategoryInformationTC,
+   initFormCategoryAC
 } from "../../redux/categoriesReducer"
 
 class CategoryContainer extends React.Component {
@@ -26,16 +27,18 @@ class CategoryContainer extends React.Component {
    }
 
 async componentDidMount(props){
-   // getRecipeByCategoryTC()
    await this.props.getCategoriesTC()
       this.findInfoCategory()
       this.props.getFullCategoryInformationTC(this.props.match.params.idCat)
    }
 
-//componentDidUpdate(props){
-//      this.findInfoCategory()
-//   }
-
+   // componentDidUpdate(prevProps, prevState, snapshot){
+   //    if (this.props.initFormCategory.title && this.props.initFormCategory.title !== this.state.category.title)
+   //
+   //    this.findInfoCategory()
+   //    console.log("initFormCategory:", this.props.initFormCategory.title)
+   //    console.log("this.state:", this.state.category.title)
+   // }
 
    render(props) {
       return <Category
@@ -48,6 +51,8 @@ async componentDidMount(props){
                recipeByCategory={this.props.recipeByCategory}
                parentsCategory={this.props.parentsCategory}
                articlesCategory={this.props.articlesCategory}
+               initFormCategory={this.props.initFormCategory}
+               initFormCategoryAC={this.props.initFormCategoryAC}
                />
    }
 }
@@ -59,7 +64,8 @@ let MapStateToProps = (state) => {
       categories: state.categoriesPage.categories,
       recipeByCategory: state.categoriesPage.recipeByCategory,
       parentsCategory: state.categoriesPage.parentsCategory,
-      articlesCategory: state.categoriesPage.articlesCategory
+      articlesCategory: state.categoriesPage.articlesCategory,
+      initFormCategory: state.categoriesPage.initFormCategory
    }
 }
 
@@ -69,7 +75,8 @@ let MapDispatchToProps = (dispatch) => {
    delCategoryTC: (categoryId) => dispatch(delCategoryTC(categoryId)),
    updateCategoryTC: (id, title) => dispatch(updateCategoryTC(id, title)),
    getRecipeByCategoryTC: (id) => dispatch(getRecipeByCategoryTC(id)),
-   getFullCategoryInformationTC: (id) => dispatch(getFullCategoryInformationTC(id))
+   getFullCategoryInformationTC: (id) => dispatch(getFullCategoryInformationTC(id)),
+   initFormCategoryAC: (data) => dispatch(initFormCategoryAC(data))
    }
 }
 export default connect(MapStateToProps, MapDispatchToProps) (WithUrlCategoryContainer)

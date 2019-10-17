@@ -4,7 +4,8 @@ import {
    getRecipeTC,
    updateRecipeTC,
    delResipeTC,
-   getCategoryListTC
+   getCategoryListTC,
+   loadAC
 } from "./../../redux/recipeReducer"
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
@@ -36,6 +37,8 @@ class RecipeContainer extends React.Component {
                updateRecipeTC={(obj) => this.props.updateRecipeTC(obj)}
                delResipeTC={(id) => this.props.delResipeTC(id)}
                categoryList={this.props.categoryList}
+               initFormRecipe={this.props.initFormRecipe}
+               loadAC={this.props.loadAC}               
                />
    }
 }
@@ -48,7 +51,8 @@ let MapStateToProps = (state) => {
       text: state.recipePage.recipe.text,
       categoryId: state.recipePage.recipe.categoryId,
       date: state.recipePage.recipe.updatedAt,
-      categoryList: state.recipePage.categoryList
+      categoryList: state.recipePage.categoryList,
+      initFormRecipe: state.recipePage.initFormRecipe
    })}
 
 let MapDispatchToProps = (dispatch) => {
@@ -56,7 +60,8 @@ let MapDispatchToProps = (dispatch) => {
       getRecipeTC: (id) => {dispatch(getRecipeTC(id))},
       updateRecipeTC: (obj) => {dispatch(updateRecipeTC(obj))},
       delResipeTC: (id) => {dispatch(delResipeTC(id))},
-      getCategoryListTC: (id) => {dispatch(getCategoryListTC(id))}
+      getCategoryListTC: (id) => {dispatch(getCategoryListTC(id))},
+      loadAC: (data) => {dispatch(loadAC(data))}
    })
 }
 

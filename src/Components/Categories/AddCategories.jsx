@@ -3,6 +3,7 @@ import {Field, reduxForm} from 'redux-form'
 import {Redirect} from 'react-router-dom'
 import {Input, Select} from './../FormsControl/FormsControl'
 import "./Categories.css"
+import {required, minTitle} from "./../../Validators/Validators"
 
 const AddCategoriesForm = (props) => {
 
@@ -19,10 +20,12 @@ const AddCategoriesForm = (props) => {
            type="text"
            placeholder="Название категории"
            component={Input}
-           />
+           validate={[required, minTitle]}
+           /><br />
 
            <div><b>Выберите родительскую категорию</b></div>
               <Field name="parentId" component={Select}>
+                 <option>Без категории</option>
                  {showCategories}
                </Field>
       </div>

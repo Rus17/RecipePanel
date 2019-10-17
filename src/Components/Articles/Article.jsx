@@ -1,16 +1,13 @@
-import {Field, reduxForm} from 'redux-form'
 import React, {useState} from 'react'
 import {Redirect} from 'react-router-dom'
 import "./Articles.css"
-import {Input, TextArea} from './../FormsControl/FormsControl'
 import {NavLink} from "react-router-dom"
+import ArticleEditForm from "./ArticleEditForm"
 
 const Article = (props) => {
 
    let category = props.categoryList.map((c) => {
       return <NavLink  key={c._id} to={`/category/${c._id}`}> / {c.title}</NavLink>
-
-      // return <span key={c._id}> / {c.title}</span>
    })
 
 
@@ -29,8 +26,17 @@ const Article = (props) => {
    }
 
    let [editMode, setEditMode] = useState(false)
+
     const modeEdit = () =>{
+
+      props.initFormArticleAC({
+         title: props.title,
+         description: props.description,
+         text: props.text
+      })
+
        setEditMode(true)
+
     }
 
     let [status, setStatus] = useState(true)
@@ -47,15 +53,11 @@ const Article = (props) => {
    if(!status)return <Redirect to={"/articles"} />
    return (<>
       {editMode ?
-         <ReduxArticleForm
-            id={props.id}
-            title={props.title}
-            description={props.description}
-            text={props.text}
-            date={props.date}
+         <ArticleEditForm
             onSubmit={onSubmit}
+            initialValues={props.initFormArticle}
          /> :
-         <div className="article">         
+         <div className="article">
          <h2>{props.title}</h2>
          <div><b>Описание статьи</b></div>
          <div>{props.description}</div><br />
@@ -73,40 +75,5 @@ const Article = (props) => {
       }</>)
 
 }
-
-//----------------------------------------------
-
-const ArticleForm = (props) => {
-
-   return ( <><form onSubmit={props.handleSubmit} className="article">
-      <div>Название статьи</div>
-         <Field
-           name="title"
-           type="text"
-           component="TextArea">{props.title}
-         </Field>
-
-         <div>Описание статьи</div>
-            <Field
-              name="description"
-              type="text"
-              component="TextArea">{props.description}
-            </Field>
-
-      <div>Статья</div>
-         <Field
-           name="text"
-           type="text"
-           component="TextArea">{props.text}
-         </Field><br />
-
-      <button>Сохранить изменения</button>
-   </form>
-   </>)
-
-}
-
-
-const ReduxArticleForm = reduxForm ({form: "editArticle"}) (ArticleForm)
 
 export default Article

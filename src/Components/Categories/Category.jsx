@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import {Redirect} from 'react-router-dom'
-import EditCategory from "./EditCategory"
+import CategoryEditForm from "./CategoryEditForm"
 import {NavLink} from "react-router-dom"
 import "./Categories.css"
 
@@ -32,13 +32,26 @@ const Category = (props) => {
    }
 
    let [editMode, setEditMode] = useState(false)
+
    const editCat = (id, title) => {
       // props.updateCategoryTC()
+      props.initFormCategoryAC({
+         title: props.title
+      })
+
       setEditMode(true)
    }
 
+   const onSubmit = (formData) =>{
+      props.updateCategoryTC(props.id, formData.title)
+      setStatus(false)
+   }
+
 if(!status)return <Redirect to={"/categories"} />
-if(editMode)return <EditCategory id={props.id} title={props.title}/>
+if(editMode)return <CategoryEditForm
+                     initialValues={props.initFormCategory}
+                     onSubmit={onSubmit}
+                     />
 else
    return <div className="category">
            {}

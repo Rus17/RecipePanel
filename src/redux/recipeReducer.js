@@ -8,13 +8,17 @@ import {getRecipesTC} from "./recipesReducer"
 
 const GET_RECIPE = 'GET_RECIPE'
 const GET_CATEGORY_LIST = 'GET_CATEGORY_LIST'
+const GET_DEFAULT_VALUE = "GET_DEFAULT_VALUE"
 
 let initialState = {
    recipe: [],
-   categoryList: []
+   categoryList: [],
+   initFormRecipe: {}
+   
 };
 
 const recipeReducer = (state = initialState, action) => {
+   
    switch(action.type) {
       case GET_RECIPE:
          return {
@@ -27,13 +31,22 @@ const recipeReducer = (state = initialState, action) => {
                ...state,
                categoryList: action.categoryList
             }
-
+         
+         case GET_DEFAULT_VALUE:
+            return {               
+               ...state,
+               initFormRecipe: action.data
+            }  
       default:
          return state;
    }
 }
 
 // ------------------------- Action Creators -------------------------
+
+export const loadAC = data => {
+   return ({ type: GET_DEFAULT_VALUE, data })
+}
 // ------------------------- Get recipe -------------------------
 const getRecipeAC = (getRecipe) => ({
    type: GET_RECIPE,

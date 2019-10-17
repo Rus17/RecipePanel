@@ -4,7 +4,11 @@ import {setRecipeTC} from "../../redux/recipesReducer"
 import {connect} from "react-redux"
 
 const AddRecipeContainer = (props) => {
-   return <AddRecipe setRecipeTC={props.setRecipeTC} categoriesPage={props.categoriesPage}/>
+   return <AddRecipe 
+            setRecipeTC={props.setRecipeTC} 
+            categoriesPage={props.categoriesPage}
+            editFormRecipePage={props.editFormRecipePage}
+            />
 }
 
 let MapStateToProps = (state) => {

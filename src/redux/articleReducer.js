@@ -8,10 +8,12 @@ import {getArticlesTC} from "./articlesReducer"
 
 const GET_ARTICLE = 'GET_ARTICLE'
 const GET_CATEGORY_LIST = 'GET_CATEGORY_LIST'
+const INIT_ARICLE_VALUE = "INIT_ARICLE_VALUE"
 
 let initialState = {
    article: [],
-   categoryList: []
+   categoryList: [],
+   initFormArticle: {}
 };
 
 const articleReducer = (state = initialState, action) => {
@@ -28,12 +30,22 @@ const articleReducer = (state = initialState, action) => {
                categoryList: action.categoryList
             }
 
+         case INIT_ARICLE_VALUE:
+            return {
+               ...state,
+               initFormArticle: action.data
+            }
+
       default:
          return state;
    }
 }
 
 // ------------------------- Action Creators -------------------------
+
+export const initFormArticleAC = data => {
+   return ({ type: INIT_ARICLE_VALUE, data })
+}
 // ------------------------- Get article -------------------------
 const getArticleAC = (getArticle) => ({
    type: GET_ARTICLE,
